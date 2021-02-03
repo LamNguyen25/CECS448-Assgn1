@@ -1,5 +1,5 @@
 # CECS448-Assignment 1
-# An Interactive and Responsive form
+## An Interactive and Responsive form
 
 # Getting Started with Create React App
 
