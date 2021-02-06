@@ -17,8 +17,9 @@ const useStyles = makeStyles((theme) =>({
         alignItems: 'center',
         borderRadius: 15,
         position: "relative",
-        // marginBottom: 20,
-        // marginTop: 20
+    },
+    text:{
+        color:'white'
     }
   }))
 
@@ -35,14 +36,17 @@ function RegistrationForm() {
                         Register 
                         <span style={{color: "#3d5afe"}}> New account</span>
                     </Typography>
-                    <div className="input-form" style={{color: '#ffffff'}}>
-                        <form className="form" noValidate>
+                    <div className="input-form">
+                        <form className="form" noValidate >
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         autoComplete="fname"
                                         name="firstName"
                                         variant="outlined"
+                                        InputProps={{
+                                            className: classes.text
+                                        }}
                                         required
                                         fullWidth
                                         id="firstName"
@@ -55,11 +59,58 @@ function RegistrationForm() {
                                     <TextField
                                         variant="outlined"
                                         required
+                                        InputProps={{
+                                            className: classes.text
+                                        }}
                                         fullWidth
                                         id="lastName"
                                         label="Last Name"
                                         name="lastName"
                                         autoComplete="lname"
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        variant="outlined"
+                                        required
+                                        InputProps={{
+                                            className: classes.text
+                                        }}
+                                        fullWidth
+                                        id="email"
+                                        label="Email Address"
+                                        name="email"
+                                        autoComplete="email"
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        variant="outlined"
+                                        required
+                                        InputProps={{
+                                            className: classes.text
+                                        }}
+                                        fullWidth
+                                        name="password"
+                                        label="Password"
+                                        type="password"
+                                        id="password"
+                                        autoComplete="current-password"
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        variant="outlined"
+                                        required
+                                        InputProps={{
+                                            className: classes.text
+                                        }}
+                                        fullWidth
+                                        name="confirmPassword"
+                                        label="ConfirmPassword"
+                                        type="password"
+                                        id="password"
+                                        autoComplete="current-password"
                                     />
                                 </Grid>
                             </Grid>
