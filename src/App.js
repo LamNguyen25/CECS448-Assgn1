@@ -24,7 +24,6 @@ const theme = createMuiTheme({
 }
 )
 
-//dfdfdedfd
 
 
 
@@ -36,6 +35,7 @@ function App() {
         <div className="container">
           <Switch>
             <Route exact path="/" component={RegistrationForm}/>
+         
           </Switch>
         </div>
       </Router>

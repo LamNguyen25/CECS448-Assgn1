@@ -16,6 +16,8 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import PhotoDropZone from './photoDropZone';
 import './Form.scss';
 
+import Button from '@material-ui/core/Button';
+
 const useStyles = makeStyles((theme) =>({
     root: {
         minWidth: 300,
@@ -234,8 +236,28 @@ function RegistrationForm() {
                                         autoComplete="postal-code"
                                     />
                                 </Grid>
+                                <Grid item xs={12}>
+                                    {/* <Button
+                                        type="submit"
+                                        fullWidth
+                                        variant="contained"
+                                        color="primary"
+                                        className={classes.submit}
+                                        >
+                                        Sign Up
+                                    </Button> */}
+                                
+
+                                    <button className="styled"
+                                            type="button">
+                                        Sign Up 
+                                    </button>
+
+                           
+                                </Grid>
                                 
                             </Grid>
+
                         </form>
 
                     </div>
