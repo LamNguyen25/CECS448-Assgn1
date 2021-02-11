@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
+import { createStyles, makeStyles, Card, CardContent, Typography, Container, TextField, Button } from '@material-ui/core';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -14,6 +8,13 @@ import Grid from '@material-ui/core/Grid';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import PhotoDropZone from './photoDropZone';
+
+// pop-up 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+
 import './Form.scss';
 
 const useStyles = makeStyles((theme) =>({
@@ -33,19 +34,30 @@ const useStyles = makeStyles((theme) =>({
     }
   }))
 
-function RegistrationForm() {
-    const classes = useStyles();
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
-    const [firstName, setFirstName] = useState({ value: "", error: "" });
-    const [lastName, setLastName] = useState({ value: "", error: "" });
-    const [email, setEmail] = useState({ value: "", error: "" });
-    const [password, setPassword] = useState({ value: "", error: "" });
-    const [confirmPassword, setconfirmPassword] = useState({value: "", error: ""});
-    const [address, setAddress] = useState({ value: "", error: "" });
-    const [city, setCity] = useState({ value: "", error: "" });
-    const [zipCode, setZipCode] = useState({ value: "", error: "" });
+function RegistrationForm() {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setconfirmPassword] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [zipCode, setZipCode] = useState("");
+    const [loadingStyleName, setLoadingStyleName] = useState("");
     const [loading, setLoading] = useState(false);
     const [showPassword, setshowPassword] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const classes = useStyles();
+    
+    useEffect(() => {
+        setLoading(false);
+        setLoadingStyleName("");
+    }, []);
 
     const handleClickShowPassword = () => {
         setshowPassword(!showPassword);
@@ -54,6 +66,35 @@ function RegistrationForm() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleSubmit = () => {
+        setLoadingStyleName("onclick-btn");
+
+        console.log(firstName.value)
+        setLoading(true);
+        setTimeout(function() {
+            setLoadingStyleName("validate");
+
+        }, 2250 );
+        setTimeout(function() {
+            setLoadingStyleName("");
+        }, 1250 );
+
+        setTimeout(function() {
+            handleClickOpen();
+        }, 2500 );
+        
+    };
+
     return (
          <Container style={{marginTop: 20}} component="main" maxWidth="xs">
             <Card className={classes.root} variant="outlined">
@@ -88,7 +129,7 @@ function RegistrationForm() {
                                         fullWidth
                                         id="firstName"
                                         label="First Name"
-                                        value={firstName.value}
+                                        value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
                                         autoFocus
                                     />
@@ -107,7 +148,7 @@ function RegistrationForm() {
                                         id="lastName"
                                         label="Last Name"
                                         name="lastName"
-                                        value={lastName.value}
+                                        value={lastName}
                                         onChange={(e) => setLastName(e.target.value)}
                                         autoComplete="lname"
                                     />
@@ -126,7 +167,7 @@ function RegistrationForm() {
                                         id="email"
                                         label="Email Address"
                                         name="email"
-                                        value={email.value}
+                                        value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         autoComplete="email"
                                     />
@@ -136,12 +177,13 @@ function RegistrationForm() {
                                         <OutlinedInput
                                             id="outlined-adornment-password"
                                             type={showPassword ? 'text' : 'password'}
-                                            value={password.value}
+                                            value={password}
                                             classes={{root: classes.text,}}
                                             onChange={(e) => setPassword(e.target.value)}
                                             endAdornment={
                                             <InputAdornment position="end">
                                                 <IconButton
+                                                    className="icon-btn"
                                                     aria-label="toggle password visibility"
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
@@ -159,12 +201,13 @@ function RegistrationForm() {
                                         <OutlinedInput
                                             id="outlined-adornment-password"
                                             type={showPassword ? 'text' : 'password'}
-                                            value={confirmPassword.value}
+                                            value={confirmPassword}
                                             classes={{root: classes.text,}}
                                             onChange={(e) => setconfirmPassword(e.target.value)}
                                             endAdornment={
                                             <InputAdornment position="end">
                                                 <IconButton
+                                                    className="icon-btn"
                                                     aria-label="toggle password visibility"
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
@@ -191,7 +234,7 @@ function RegistrationForm() {
                                         id="address"
                                         label="Address"
                                         name="address"
-                                        value={address.value}
+                                        value={address}
                                         onChange={(e) => setAddress(e.target.value)}
                                         autoComplete="street-address"
                                     />
@@ -210,7 +253,7 @@ function RegistrationForm() {
                                         fullWidth
                                         id="city"
                                         label="City"
-                                        value={city.value}
+                                        value={city}
                                         onChange={(e) => setCity(e.target.value)}
                                         autoFocus
                                     />
@@ -229,20 +272,39 @@ function RegistrationForm() {
                                         id="zipCode"
                                         label="Zip Code"
                                         name="zipCode"
-                                        value={zipCode.value}
+                                        value={zipCode}
                                         onChange={(e) => setZipCode(e.target.value)}
                                         autoComplete="postal-code"
                                     />
                                 </Grid>
-                                
+                                <Grid item xs={12} className={{ alignItems: 'center' }}>
+                                    <button 
+                                        type="button" 
+                                        className= { loadingStyleName ? loadingStyleName : ""}
+                                        onClick={handleSubmit}
+                                    ></button>
+                                    
+                                </Grid>
                             </Grid>
                         </form>
-
                     </div>
-
                 </CardContent>
             </Card>     
-
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-slide-title"
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle id="alert-dialog-slide-title">{"Congratulations! you have successfully created an account with us"}</DialogTitle>
+                <p className="dialog-text">Your Name: {" " + firstName ? firstName : "" +  " " + lastName ? lastName : ""}</p>
+                <p className="dialog-text">Email: {" " + email ? email : "" }</p>
+                <DialogActions>
+                    <Button className="on-closePopUp" onClick={handleClose}/>
+                </DialogActions>
+            </Dialog>
          </Container>
            
     )

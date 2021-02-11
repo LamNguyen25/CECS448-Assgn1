@@ -2,6 +2,7 @@ import React from "react";
 
 import Dropzone from 'react-dropzone-uploader'
 import 'react-dropzone-uploader/dist/styles.css'
+import './Form.scss';
 
 const PhotoDropZone = () => {
 
@@ -19,6 +20,7 @@ const PhotoDropZone = () => {
 
     return (
         <Dropzone
+            classNames="con-btn"
             getUploadParams={getUploadParams}
             onChangeStatus={handleChangeStatus}
             onSubmit={handleSubmit}
