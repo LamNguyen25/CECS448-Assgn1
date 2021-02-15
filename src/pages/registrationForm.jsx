@@ -15,6 +15,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import PhotoDropZone from './photoDropZone';
 import './Form.scss';
+import { Checkbox } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) =>({
     root: {
@@ -44,6 +45,9 @@ function RegistrationForm() {
     const [address, setAddress] = useState({ value: "", error: "" });
     const [city, setCity] = useState({ value: "", error: "" });
     const [zipCode, setZipCode] = useState({ value: "", error: "" });
+    const [referralCode, setReferralCode] = useState({ value: "", error: "" });
+    const [emailOptIn, setEmailOptIn] = useState({ value: "", error: "" });
+
     const [loading, setLoading] = useState(false);
     const [showPassword, setshowPassword] = useState(false);
 
@@ -234,7 +238,36 @@ function RegistrationForm() {
                                         autoComplete="postal-code"
                                     />
                                 </Grid>
-                                
+                                <Grid item xs={12}>
+                                    <TextField
+                                        variant="outlined"
+                                        required
+                                        InputProps={{
+                                            className: classes.text
+                                        }}
+                                        InputLabelProps={{
+                                            className: classes.label
+                                        }}
+                                        fullWidth
+                                        id="referral"
+                                        label="Referral Code (Optional)"
+                                        name="referral"
+                                        value={referralCode.value}
+                                        onChange={(e) => setReferralCode(e.target.value)}
+                                        autoComplete="postal-code"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={2}>
+                                    <Checkbox
+                                         value={emailOptIn.value}
+                                         onChange={(e) => setEmailOptIn(e.target.value)}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={10}>
+                                    <Typography variant="h7">
+                                        Send me receive marketing promotions and updates via email
+                                    </Typography>
+                                </Grid>
                             </Grid>
                         </form>
 
