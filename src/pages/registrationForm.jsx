@@ -265,7 +265,7 @@ function RegistrationForm() {
                                 </Grid>
                                 <Grid item xs={12} sm={10}>
                                     <Typography variant="h7">
-                                        Send me receive marketing promotions and updates via email
+                                        Send me marketing promotions and updates via email
                                     </Typography>
                                 </Grid>
                             </Grid>
