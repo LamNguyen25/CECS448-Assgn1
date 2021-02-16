@@ -67,11 +67,16 @@ button {
     }
   }
 
-  .icon-btn {
+.icon-btn {
     &:after {
         content:"";
     }
-  }
+}
+.submitButton {
+    &:after {
+        content:"";
+    }
+}
 .dialog-text {
     margin-left: 30px;
     font-size: 10;
@@ -79,7 +84,6 @@ button {
 }
 .on-closePopUp {
     align-items: center;
-    color: rgba(45,146,204,0.9887387387387387);
     font-weight: bold;
     &:after {
         content:"CLOSE";
