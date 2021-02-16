@@ -283,6 +283,7 @@ function RegistrationForm() {
                                 </Grid>
 
                                 <Grid item xs={12}>
+<<<<<<< Updated upstream
                                     <TextField
                                         variant="outlined"
                                         required
@@ -312,6 +313,14 @@ function RegistrationForm() {
                                         Send me marketing promotions and updates via email
                                     </Typography>
                                 </Grid>
+=======
+                                    <div class="center">
+                                        <button type="button" class="style">
+                                            Sign Up 
+                                        </button>
+                                    </div>
+                                    
+>>>>>>> Stashed changes
 
                                 <Grid item xs={12} className={{ alignItems: 'center' }}>
                                     <button 
