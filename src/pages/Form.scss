@@ -67,6 +67,18 @@ button {
     }
   }
 
+  .validate-error {
+    font-size:13px;
+    color: white;
+    background: white;
+    &:after {
+        width: 40px;
+        font-family:'FontAwesome';
+        color: red;
+        content:"\26A0";
+    }
+  }
+
 .icon-btn {
     &:after {
         content:"";

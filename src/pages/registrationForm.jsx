@@ -96,20 +96,34 @@ function RegistrationForm() {
 
     const handleSubmit = () => {
         setLoadingStyleName("onclick-btn");
+        
+        if(!firstName || !lastName || !email || !password || !confirmPassword) {
+            setTimeout(function() {
+                setLoadingStyleName("validate-error");
+    
+            }, 2250 );
+            setTimeout(function() {
+                setLoadingStyleName("");
+            }, 1250 );
+            setTimeout(function() {
+                alert("Please fill out all the required fields")
+            }, 2500 );
+            
+        } else {
+            console.log(firstName.value)
+            setLoading(true);
+            setTimeout(function() {
+                setLoadingStyleName("validate");
 
-        console.log(firstName.value)
-        setLoading(true);
-        setTimeout(function() {
-            setLoadingStyleName("validate");
+            }, 2250 );
+            setTimeout(function() {
+                setLoadingStyleName("");
+            }, 1250 );
 
-        }, 2250 );
-        setTimeout(function() {
-            setLoadingStyleName("");
-        }, 1250 );
-
-        setTimeout(function() {
-            handleClickOpen();
-        }, 2500 );
+            setTimeout(function() {
+                handleClickOpen();
+            }, 2500 );
+        }
         
     };
 
