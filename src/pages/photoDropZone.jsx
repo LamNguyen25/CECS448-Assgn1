@@ -25,8 +25,8 @@ const PhotoDropZone = () => {
             onChangeStatus={handleChangeStatus}
             onSubmit={handleSubmit}
             accept="image/*,audio/*,video/*"
-            
-            inputContent={(files, extra) => (extra.reject ? 'Only Image, audio and video files allowed!' : 'Select and Drop Files')}
+            maxFiles={1}
+            inputContent={(files, extra) => (extra.reject ? 'Only Image, audio and video files allowed!' : 'Select and Drop a File')}
             styles={{
                 dropzoneReject: { borderColor: '#F19373', backgroundColor: '#F1BDAB' },
                 inputLabel: (files, extra) => (extra.reject ? { color: '#A02800' } : {}),

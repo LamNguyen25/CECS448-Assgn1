@@ -9,6 +9,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import PhotoDropZone from './photoDropZone';
 
+
 // pop-up 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -32,7 +33,20 @@ const useStyles = makeStyles((theme) =>({
     },
     label: {
         color: '#bdb2ff'
-    }
+    },
+    onPopCloseBtn: {
+        background: 'linear-gradient(45deg, rgba(132,100,232,1) 30%, rgba(28,28,212,1) 90%)',
+        borderRadius: 3,
+        border: 0,
+        color: 'white',
+        height: 48,
+        padding: '0 30px',
+        boxShadow: '0 3px 5px 2px #cdb4db',
+        alignItems: 'center',
+    },
+      labelBtn: {
+        textTransform: 'capitalize',
+    },
   }))
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -337,7 +351,14 @@ function RegistrationForm() {
                 <p className="dialog-text">Your Name: {" " + firstName ? firstName : "" +  " " + lastName ? lastName : ""}</p>
                 <p className="dialog-text">Email: {" " + email ? email : "" }</p>
                 <DialogActions>
-                    <Button className="on-closePopUp" onClick={handleClose}/>
+                    <Button 
+                        className="on-closePopUp" 
+                        onClick={handleClose}
+                        classes={{
+                            root: classes.onPopCloseBtn, // class name, e.g. `classes-nesting-root-x`
+                            label: classes.labelBtn, // class name, e.g. `classes-nesting-label-x`
+                        }}
+                        />
                 </DialogActions>
             </Dialog>
          </Container>
