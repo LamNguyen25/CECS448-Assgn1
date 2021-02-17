@@ -137,13 +137,13 @@ function RegistrationForm() {
                     </Typography>
                     <div className="input-form">
                         <form className="form" noValidate >
-                            <Grid container spacing={2}>
+                            <Grid container spacing={3}>
                                 <Grid item xs={12}>
                                     <Typography variant="h7">
                                         Upload a Profile Picutre
                                     </Typography>
                                 </Grid>
-                                <Grid item xs={12}>
+                                <Grid item xs={12} sm={6}>
                                     <PhotoDropZone/>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
