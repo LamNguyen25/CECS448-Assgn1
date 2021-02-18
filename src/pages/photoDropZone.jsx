@@ -15,7 +15,9 @@ const PhotoDropZone = () => {
     // Return the current status of files being uploaded
     const handleChangeStatus = ({ meta, file }, status) => {
         var file = URL.createObjectURL(file);
-        setImgPreview(file);
+        setTimeout(function() {
+            setImgPreview(file);
+        }, 2650 );
         console.log(file);
      }
 
