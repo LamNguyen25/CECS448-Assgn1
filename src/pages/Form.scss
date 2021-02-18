@@ -70,7 +70,7 @@ button {
   .validate-error {
     font-size:13px;
     color: white;
-    background: white;
+    background: orange;
     &:after {
         width: 40px;
         font-family:'FontAwesome';
@@ -100,12 +100,6 @@ button {
     &:after {
         content:"CLOSE";
     }
-}
-.imgPreview {
-    vertical-align: middle;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
 }
 
 @keyframes rotating {
