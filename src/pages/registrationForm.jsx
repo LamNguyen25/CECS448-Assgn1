@@ -208,6 +208,7 @@ function RegistrationForm() {
                                     <InputLabel className={classes.label} htmlFor="outlined-adornment-password"> Password</InputLabel>
                                         <OutlinedInput
                                             id="outlined-adornment-password"
+                                            required
                                             type={showPassword ? 'text' : 'password'}
                                             value={password}
                                             classes={{root: classes.text,}}
@@ -232,6 +233,7 @@ function RegistrationForm() {
                                     <InputLabel className={classes.label} htmlFor="outlined-adornment-password"> Confirm Password</InputLabel>
                                         <OutlinedInput
                                             id="outlined-adornment-password"
+                                            required
                                             type={showPassword ? 'text' : 'password'}
                                             value={confirmPassword}
                                             classes={{root: classes.text,}}
@@ -255,7 +257,6 @@ function RegistrationForm() {
                                 <Grid item xs={12}>
                                     <TextField
                                         variant="outlined"
-                                        required
                                         InputProps={{
                                             className: classes.text
                                         }}
@@ -281,7 +282,6 @@ function RegistrationForm() {
                                         InputLabelProps={{
                                             className: classes.label
                                         }}
-                                        required
                                         fullWidth
                                         id="city"
                                         label="City"
@@ -293,7 +293,6 @@ function RegistrationForm() {
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         variant="outlined"
-                                        required
                                         InputProps={{
                                             className: classes.text
                                         }}
@@ -313,7 +312,6 @@ function RegistrationForm() {
                                 <Grid item xs={12}>
                                     <TextField
                                         variant="outlined"
-                                        required
                                         InputProps={{
                                             className: classes.text
                                         }}
